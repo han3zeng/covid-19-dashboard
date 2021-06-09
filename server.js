@@ -11,17 +11,41 @@ const handle = app.getRequestHandler()
 
 const getSpreadsheetData = require('./utils/spreadsheet')
 const { sheetDataProcessor } = require('./utils/processor')
+const { logger, getLogObject } = require('./utils/create-logger');
 
 const redis = require('redis')
-const client = redis.createClient({
-  host: process.env.REDIS_HOST,
-  post: process.env.REDIS_PORT
-})
+let client = null
+
 const DATA_KEY = 'spreadsheet'
 const UPDATED_AT = 'updatedAt'
-client.on('error', function (error) {
-  console.error(error)
-})
+const UPDATE_INTERVAL = 10;
+
+try {
+  let initialized = null
+  client = redis.createClient({
+    host: process.env.REDIS_HOST,
+    post: process.env.REDIS_PORT,
+    connect_timeout: 300000
+  })
+  client.on('error', function (error) {
+    if (!initialized) {
+      logger.log(getLogObject({
+        level: 'error',
+        message: 'redis on client error',
+        error,
+        filename: 'server.js'
+      }))
+      initialized = true
+    }
+  })
+} catch (error) {
+  logger.log(getLogObject({
+    level: 'error',
+    message: 'redis createClient error',
+    error,
+    filename: 'server.js'
+  }))
+}
 
 function fetchFromGoogleAndWrite ({
   res,
@@ -34,22 +58,39 @@ function fetchFromGoogleAndWrite ({
         rawData: rawSpreadsheet
       })
       const spreadsheetJSONString = JSON.stringify(spreadsheet)
-      client.set(DATA_KEY, spreadsheetJSONString, (err) => {
-        if (err) {
-          console.log('redis set spreadsheet error:', err)
+      client.set(DATA_KEY, spreadsheetJSONString, (error) => {
+        if (error) {
+          logger.log(getLogObject({
+            level: 'error',
+            message: `redis set redis key: ${DATA_KEY} error`,
+            error,
+            filename: 'server.js'
+          }))
         }
       })
       client.set(UPDATED_AT, currentTimestamp, (err) => {
         if (err) {
-          console.log('redis set UPDATED_AT error:', err)
+          logger.log(getLogObject({
+            level: 'error',
+            message: `redis set redis key: ${UPDATED_AT} error`,
+            error: err,
+            filename: 'server.js'
+          }))
         }
       })
       console.log('updateAndWrite')
       res.json(spreadsheet)
     })
-    .catch(({ info, err }) => {
-      console.log(info)
-      console.log(err)
+    .catch(({
+      message,
+      error
+    }) => {
+      logger.log(getLogObject({
+        level: 'error',
+        message,
+        error,
+        filename: 'spreadsheet.js'
+      }))
     })
 }
 
@@ -64,8 +105,7 @@ function fetchSpreadsheetData ({
     }
     const updatedAtInt = parseInt(updatedAt)
     const timeInterval = Math.floor((currentTimestamp - updatedAtInt) / 1000)
-    console.log('timeInterval: ', timeInterval)
-    if ((updatedAt && timeInterval >= 10) || !updatedAt) {
+    if ((updatedAt && timeInterval >= UPDATE_INTERVAL) || !updatedAt) {
       fetchFromGoogleAndWrite({
         res,
         currentTimestamp
@@ -73,7 +113,12 @@ function fetchSpreadsheetData ({
     } else {
       client.get(DATA_KEY, (err, spreadsheet) => {
         if (err) {
-          console.log('redis get spreadsheet error: ', err)
+          logger.log(getLogObject({
+            level: 'error',
+            message: `redis get key: ${DATA_KEY} error`,
+            error: err,
+            filename: 'server.js'
+          }))
           return
         }
         console.log('cache')
@@ -81,6 +126,12 @@ function fetchSpreadsheetData ({
           const result = JSON.parse(spreadsheet)
           res.json(result)
         } catch (err) {
+          logger.log(getLogObject({
+            level: 'error',
+            message: 'server try to parse final spreadsheet data',
+            error: err,
+            filename: 'server.js'
+          }))
           res.json({
             err
           })

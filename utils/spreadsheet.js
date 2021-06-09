@@ -1,3 +1,4 @@
+/* eslint-disable */
 const fs = require('fs');
 const readline = require('readline');
 const {
@@ -6,9 +7,6 @@ const {
 const path = require('path');
 const CLINET_SECRET = path.resolve(process.cwd(), './client_secret.json');
 const TOKEN_PATH = path.resolve(process.cwd(), './token.json');
-// const { writeFile } = require('./utils/index');
-// const { processor, keyEventsProcessor } = require('./utils/data-processor');
-// const logger = require('./utils/create-logger');
 
 // If modifying these scopes, delete token.json.
 const SCOPES = ['https://www.googleapis.com/auth/spreadsheets.readonly']
@@ -18,14 +16,23 @@ const SCOPES = ['https://www.googleapis.com/auth/spreadsheets.readonly']
 async function getSpreadsheetData() {
   let promise = new Promise((resolve, reject) => {
     // Load client secrets from a local file.
-    fs.readFile(CLINET_SECRET, (err, content) => {
-      if (err) return reject({
-        info: 'Error loading client secret file:',
-        err,
+    fs.readFile(CLINET_SECRET, (error, content) => {
+      if (error) return reject({
+        message: 'try to read client_secret.json',
+        error,
       });
       // Authorize a client with credentials, then call the Google Sheets API.
-      // console.log('content: ', JSON.parse(content))
-      authorize(JSON.parse(content), listMajors);
+      try {
+        const credentials = JSON.parse(content)
+        authorize(credentials, listMajors);
+      } catch (e) {
+        if (e) {
+          reject({
+            message: 'try to parse client_secret.json',
+            error: e,
+          });
+        }
+      }
     });
 
     /**
@@ -71,17 +78,17 @@ async function getSpreadsheetData() {
         rl.close();
         oAuth2Client.getToken(code, (err, token) => {
           if (err) return reject({
-            info: 'Error while trying to retrieve access token: ',
-            err,
+            message: 'Error while trying to retrieve access token: ',
+            error: err,
           });
           oAuth2Client.setCredentials(token);
           // Store the token to disk for later program executions
           fs.writeFile(TOKEN_PATH, JSON.stringify(token), (err) => {
             if (err) return reject({
-              info: 'Store token to local systen',
-              err,
+              message: 'Store token to local systen',
+              error: err,
             });
-            console.log('Token stored to', TOKEN_PATH);
+            // console.log('Token stored to', TOKEN_PATH);
           });
           callback(oAuth2Client);
         });
@@ -103,8 +110,8 @@ async function getSpreadsheetData() {
         range: 'A2:F',
       }, (err, res) => {
         if (err) return reject({
-          info: 'The spreadsheet API returned an error:',
-          err,
+          message: 'The spreadsheet API returned an error:',
+          error: err,
         });
         const rows = res.data.values;
         if (rows.length) {

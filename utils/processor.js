@@ -1,4 +1,4 @@
-// types
+const { logger, getLogObject } = require('./create-logger')
 
 const TIMESTAMP = 'timestamp'
 const STATS = 'stats'
@@ -34,7 +34,11 @@ const createElement = ({ row, result }) => {
     // default as body
     result[`${type}_${key}`] = content
   } else {
-    console.log('exception')
+    logger.log(getLogObject({
+      filename: 'processor',
+      level: 'warning',
+      message: 'undefined content type from google spreadsheet whicn can\'t be handle'
+    }))
   }
   return result
 }

@@ -3,6 +3,11 @@ services:
   web:
     build: .
     ports:
-      - "3000:3000"
+      - "3000:5000"
+    volumes:
+      - covid-19-dashboard:/covid-19-dashboard/logs
   redis:
     image: "redis:alpine"
+volumes:
+  covid-19-dashboard:
+    external: true
