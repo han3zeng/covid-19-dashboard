@@ -18,7 +18,9 @@ let client = null
 
 const DATA_KEY = 'spreadsheet'
 const UPDATED_AT = 'updatedAt'
-const UPDATE_INTERVAL = 10;
+const UPDATE_INTERVAL = 1;
+
+let initializedErro = null;
 
 try {
   let initialized = null
@@ -28,17 +30,19 @@ try {
     connect_timeout: 300000
   })
   client.on('error', function (error) {
-    if (!initialized) {
+    if (!initialized && error) {
+      initializedErro = true;
+      initialized = true
       logger.log(getLogObject({
         level: 'error',
         message: 'redis on client error',
         error,
         filename: 'server.js'
       }))
-      initialized = true
     }
   })
 } catch (error) {
+  initializedErro = true;
   logger.log(getLogObject({
     level: 'error',
     message: 'redis createClient error',
@@ -133,7 +137,7 @@ function fetchSpreadsheetData ({
             filename: 'server.js'
           }))
           res.json({
-            err
+            error: err
           })
         }
       })
@@ -143,9 +147,15 @@ function fetchSpreadsheetData ({
 
 app.prepare().then(() => {
   expressServer.get('/fetch-data', (req, res) => {
-    fetchSpreadsheetData({
-      res
-    })
+    if (initializedErro) {
+      res.status(500).json({
+        error: new Error('redis sever error')
+      })
+    } else {
+      fetchSpreadsheetData({
+        res
+      })
+    }
   })
   expressServer.get('/*', (req, res) => {
     const parsedUrl = parse(req.url, true)

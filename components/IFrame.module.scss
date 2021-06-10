@@ -1,0 +1,8 @@
+@import '../styles/variables';
+
+.container {
+  width: 504px;
+  @media (max-width: $mobile-max) {
+    width: 100% !important;
+  }
+}

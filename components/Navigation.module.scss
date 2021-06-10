@@ -1,0 +1,19 @@
+.container {
+  position: fixed;
+  padding: 16px 16px;
+  width: 100%;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: space-between;
+  > a {
+    border: none;
+  }
+}
+
+.rightDivision {
+  display: flex;
+  align-items: center;
+  > div:nth-child(1) {
+    margin-right: 16px;
+  }
+}

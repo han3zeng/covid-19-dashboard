@@ -1,0 +1,50 @@
+@import './variables';
+
+html,
+body {
+  padding: 0;
+  margin: 0;
+  font-family: "Noto Sans", "Noto Sans CJK TC", sans-serif;
+  background-color: #EBEBEB;
+}
+
+h1 {
+  font-weight: bold;
+  font-size: 56px;
+  @media (max-width: $mobile-max) {
+    font-size: 42px;
+  }
+  color: #1F1F1F;
+  margin: 15px 0;
+}
+
+h2 {
+  font-weight: bold;
+  font-size: 28px;
+  @media (max-width: $mobile-max) {
+    font-size: 24px;
+  }
+  color: #1F1F1F;
+}
+
+.caption {
+  font-size: 14px;
+  color: #6B6B6B;
+}
+
+.p {
+  color: #1F1F1F;
+  font-size: 18px;
+}
+
+
+a {
+  color: #AA3863;
+  text-decoration: none;
+  border-bottom: 1px solid #AA3863;
+  padding-bottom: 1px;
+  &:hover {
+    padding-bottom: 0px;
+    border-bottom-width: 2px;
+  }
+}
