@@ -149,7 +149,7 @@ app.prepare().then(() => {
   expressServer.get('/fetch-data', (req, res) => {
     if (initializedErro) {
       res.status(500).json({
-        error: new Error('redis sever error')
+        error: 'redis sever initilization error'
       })
     } else {
       fetchSpreadsheetData({

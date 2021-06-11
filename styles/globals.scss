@@ -1,7 +1,6 @@
 @import './variables';
 
-html,
-body {
+html, body {
   padding: 0;
   margin: 0;
   font-family: "Noto Sans", "Noto Sans CJK TC", sans-serif;
@@ -11,6 +10,7 @@ body {
 h1 {
   font-weight: bold;
   font-size: 56px;
+  text-align: center;
   @media (max-width: $mobile-max) {
     font-size: 42px;
   }
@@ -21,6 +21,7 @@ h1 {
 h2 {
   font-weight: bold;
   font-size: 28px;
+  margin-bottom: 32px;
   @media (max-width: $mobile-max) {
     font-size: 24px;
   }
@@ -28,18 +29,21 @@ h2 {
 }
 
 .caption {
-  font-size: 14px;
-  color: #6B6B6B;
+  font-size: $caption-font-size;
+  color: $caption-color;
+  margin-bottom: 32px;
 }
 
-.p {
+p {
   color: #1F1F1F;
   font-size: 18px;
+  line-height: 1.77;
+  margin-bottom: 32px;
 }
 
 
 a {
-  color: #AA3863;
+  color: $theme-purple;
   text-decoration: none;
   border-bottom: 1px solid #AA3863;
   padding-bottom: 1px;

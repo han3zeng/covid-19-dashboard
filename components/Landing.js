@@ -22,28 +22,28 @@ function Landing ({
     <div className={styles.container}>
       <h1 dangerouslySetInnerHTML={createMarkup(h1)} />
       <div>
-        <div className="caption">{`發布日期：${timestamp_updatedAt}`}</div>
-        <div className="caption">{`最後更新：${timestamp_releasedAt}`}</div>
+        <div className={styles.moduleCaption}>{`發布日期：${timestamp_updatedAt}`}</div>
+        <div className={styles.moduleCaption}>{`最後更新：${timestamp_releasedAt}`}</div>
       </div>
       <div className={styles.statsGroup}>
         <div className={styles.stat}>
-          <div className="caption">{stats_confirmedDomesticToday.label}</div>
+          <div className={styles.moduleCaption}>{stats_confirmedDomesticToday.label}</div>
           <div className={styles.statValue}>{stats_confirmedDomesticToday.value}</div>
         </div>
         <div className={styles.stat}>
-          <div className="caption">{stats_confirmedTotal.label}</div>
+          <div className={styles.moduleCaption}>{stats_confirmedTotal.label}</div>
           <div className={styles.statValue}>{stats_confirmedTotal.value}</div>
         </div>
         <div className={styles.stat}>
-          <div className="caption">{stats_deathTotal.label}</div>
+          <div className={styles.moduleCaption}>{stats_deathTotal.label}</div>
           <div className={styles.statValue}>{stats_deathTotal.value}</div>
         </div>
         <div className={styles.stat}>
-          <div className="caption">{stats_quarantineEndCount.label}</div>
+          <div className={styles.moduleCaption}>{stats_quarantineEndCount.label}</div>
           <div className={styles.statValue}>{stats_quarantineEndCount.value}</div>
         </div>
         <div className={styles.stat}>
-          <div className="caption">{stats_vaccinatedRate.label}</div>
+          <div className={styles.moduleCaption}>{stats_vaccinatedRate.label}</div>
           <div className={styles.statValue}>{stats_vaccinatedRate.value}</div>
         </div>
       </div>

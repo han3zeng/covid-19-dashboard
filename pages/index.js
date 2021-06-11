@@ -4,6 +4,7 @@ import styles from '../styles/Home.module.scss'
 import Navigation from '../components/Navigation'
 import Landing from '../components/Landing'
 import Content from '../components/Content'
+import ReadMore from '../components/ReadMore';
 
 export default function Home ({ spreadsheet }) {
   return (
@@ -14,6 +15,9 @@ export default function Home ({ spreadsheet }) {
       />
       <Content
         data={spreadsheet.content}
+      />
+      <ReadMore
+        data={spreadsheet.read_more}
       />
     </div>
   )

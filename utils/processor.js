@@ -13,21 +13,25 @@ const CAPTION = 'caption'
 // group3: more
 const MORE = 'more'
 
-// attributes
+// sheet attributes
 const TYPE = 'type'
 const KEY = 'key'
 const LABEL = 'label'
 const VALUE = 'value'
+const DESKTOP_WIDTH = 'desktopWidth'
 const HREF = 'href'
-const IMGURL = 'imgurl'
-const DESKTOPWIDTH = 'desktopWidth'
+const IMG_URL = 'imgUrl'
+const MORE_DATE = 'date'
+const MORE_TITLE = 'title'
+
+
 
 // group keys
 const LANDING = 'landing'
 const CONTENT = 'content'
 const READ_MORE = 'read_more'
 
-const ATTRIBUTES = [TYPE, KEY, LABEL, VALUE, HREF, IMGURL, DESKTOPWIDTH]
+const ATTRIBUTES = [TYPE, KEY, LABEL, VALUE, DESKTOP_WIDTH, HREF, IMG_URL, MORE_DATE, MORE_TITLE]
 
 const selectGroup = ({
   type
@@ -54,9 +58,11 @@ const createElement = ({ row, result }) => {
   const key = row[ATTRIBUTES.indexOf(KEY)]
   const label = row[ATTRIBUTES.indexOf(LABEL)]
   const value = row[ATTRIBUTES.indexOf(VALUE)]
+  const desktopWidth = row[ATTRIBUTES.indexOf(DESKTOP_WIDTH)]
   const href = row[ATTRIBUTES.indexOf(HREF)]
-  const imgUrl = row[ATTRIBUTES.indexOf(IMGURL)]
-  const desktopWidth = row[ATTRIBUTES.indexOf(DESKTOPWIDTH)]
+  const imgUrl = row[ATTRIBUTES.indexOf(IMG_URL)]
+  const moreDate = row[ATTRIBUTES.indexOf(MORE_DATE)]
+  const moreTitle = row[ATTRIBUTES.indexOf(MORE_TITLE)]
 
   const group = selectGroup({ type })
   if (type === H1) {
@@ -82,9 +88,10 @@ const createElement = ({ row, result }) => {
   } else if (type === MORE) {
     result[group].push({
       type,
-      value,
       href,
-      imgUrl
+      imgUrl,
+      date: moreDate,
+      title: moreTitle
     })
   } else {
     logger.log(getLogObject({

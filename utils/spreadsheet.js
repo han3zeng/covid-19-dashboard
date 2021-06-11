@@ -107,7 +107,7 @@ async function getSpreadsheetData() {
       });
       sheets.spreadsheets.values.get({
         spreadsheetId: '1NwXx8Pqx_wR0O3YrpmxnWwiMv_M-6qzXu5giH566QHY',
-        range: 'A2:G',
+        range: 'A2:I',
       }, (err, res) => {
         if (err) return reject({
           message: 'The spreadsheet API returned an error:',

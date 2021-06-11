@@ -8,6 +8,7 @@
     "build": "next build",
     "run server": "redis-server --daemonize yes",
     "dev": "PORT=3000 REDIS_HOST=localhost REDIS_PORT=6379 node server.js",
+    "start:local": "PORT=3000 REDIS_HOST=localhost REDIS_PORT=6379 NODE_ENV=production node server.js",
     "start": "PORT=3000 REDIS_HOST=redis REDIS_PORT=6379 NODE_ENV=production node server.js"
   },
   "dependencies": {

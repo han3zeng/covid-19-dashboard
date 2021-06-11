@@ -1,0 +1,56 @@
+@import '../styles/variables';
+
+.container {
+  a {
+    text-decoratoin: none;
+    bottom: none;
+  }
+  @media (max-width: $mobile-max) {
+    padding: 0 $mobile-side-padding;
+  }
+}
+
+
+.more {
+  width: 504px;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 32px;
+  img {
+    width: 94px;
+    height: 94px;
+    object-fit: cover;
+    margin-right: 24px;
+  }
+  @media (max-width: $mobile-max) {
+    width: 100%;
+  }
+
+  > div {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 10px 0 5px 0;
+  }
+
+  .title {
+    font-weight: 700;
+    font-size: 18px;
+    color: #1F1F1F;
+
+  }
+  .date {
+    font-size: $caption-font-size;
+    color: $caption-color;
+  }
+}
+
+.button {
+  text-align: center;
+  border: 1px solid $theme-purple;
+  padding: 5px 0;
+  font-size: 18px;
+  font-weight: 400;
+  color: $theme-purple;
+  cursor: pointer;
+}
