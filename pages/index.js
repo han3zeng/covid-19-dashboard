@@ -4,7 +4,7 @@ import styles from '../styles/Home.module.scss'
 import Navigation from '../components/Navigation'
 import Landing from '../components/Landing'
 import Content from '../components/Content'
-import ReadMore from '../components/ReadMore';
+import ReadMore from '../components/ReadMore'
 
 export default function Home ({ spreadsheet }) {
   return (
