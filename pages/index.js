@@ -5,6 +5,7 @@ import Navigation from '../components/Navigation'
 import Landing from '../components/Landing'
 import Content from '../components/Content'
 import ReadMore from '../components/ReadMore'
+import Footer from '../components/Footer';
 
 export default function Home ({ spreadsheet }) {
   return (
@@ -19,6 +20,7 @@ export default function Home ({ spreadsheet }) {
       <ReadMore
         data={spreadsheet.read_more}
       />
+      <Footer/>
     </div>
   )
 }
