@@ -16,7 +16,7 @@ const LineShare = () => {
         target="_blank"
         rel="noopener noreferer"
       >
-        <img src='icon-share-line.svg' alt="line_share_button" />
+        <img src='/icon-share-line.svg' alt="line_share_button" />
       </a>
     </div>
   )

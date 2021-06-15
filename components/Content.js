@@ -24,7 +24,7 @@ const Components = ({
   } else if (type === IFRAME) {
     return (<IFrame value={value} desktopWidth={desktopWidth} />)
   } else if (type === CAPTION) {
-    return (<div className="caption">{value}</div>)
+    return (<div className="caption" dangerouslySetInnerHTML={createMarkup(value)} />)
   } else {
     return null
   }

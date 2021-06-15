@@ -31,12 +31,16 @@ const Footer = () => {
       name: '卓冠齊'
     },
     {
+      title: '企劃',
+      name: '董容慈、曾芯敏'
+    },
+    {
       title: '設計',
       name: '曾芯敏'
     },
     {
       title: '工程',
-      name: '曾涵郁'
+      name: '曾涵郁、陳柏偉'
     },
     {
       title: '社群編輯',

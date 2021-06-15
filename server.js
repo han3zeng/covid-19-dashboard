@@ -88,7 +88,6 @@ function fetchFromGoogleAndWrite ({
           }))
         }
       })
-      console.log('updateAndWrite')
       res.json(spreadsheet)
     })
     .catch(({
@@ -131,7 +130,6 @@ function fetchSpreadsheetData ({
           }))
           return
         }
-        console.log('cache')
         try {
           const result = JSON.parse(spreadsheet)
           res.json(result)
@@ -162,6 +160,11 @@ app.prepare().then(() => {
         res
       })
     }
+  })
+  expressServer.get('/project/covid-19-dashboard', (req, res) => {
+    req.url = '/'
+    const parsedUrl = parse(req.url, true)
+    handle(req, res, parsedUrl)
   })
   expressServer.get('/*', (req, res) => {
     const parsedUrl = parse(req.url, true)
