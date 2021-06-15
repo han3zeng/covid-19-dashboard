@@ -1,6 +1,7 @@
 // server.js
 
 const express = require('express')
+var fs = require('fs')
 const expressServer = express()
 const port = process.env.PORT
 const { parse } = require('url')
@@ -19,6 +20,11 @@ let client = null
 const DATA_KEY = 'spreadsheet'
 const UPDATED_AT = 'updatedAt'
 const UPDATE_INTERVAL = 1;
+
+const logDir = './logs'
+if (!fs.existsSync(logDir)){
+    fs.mkdirSync(logDir);
+}
 
 let initializedErro = null;
 
