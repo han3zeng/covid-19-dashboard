@@ -1,4 +1,5 @@
 import styles from './Landing.module.scss'
+const { basePath } = require('../next.config.js');
 
 function createMarkup (value) {
   return { __html: value }
@@ -20,6 +21,7 @@ function Landing ({
 
   return (
     <div className={styles.container}>
+      <img style={{ width: "57px" }}src={`${basePath}/icon-live.gif`} />
       <h1 dangerouslySetInnerHTML={createMarkup(h1)} />
       <div>
         <div className={styles.moduleCaption}>{`發布日期：${timestamp_updatedAt}`}</div>

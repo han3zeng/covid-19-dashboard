@@ -1,7 +1,7 @@
 /* global FB */
 import styles from './ShareButton.module.scss'
 const { basePath } = require('../next.config.js');
-const target = 'https://news.pts.org.tw/project/covid-tw-2021';
+const target = `https://news.pts.org.tw/${basePath}`;
 
 const LineShare = () => {
   return (
