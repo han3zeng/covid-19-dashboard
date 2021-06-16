@@ -3,7 +3,9 @@ import Document, { Html, Head, Main, NextScript } from 'next/document'
 class MyDocument extends Document {
   render () {
     return (
-      <Html>
+      <Html
+
+      >
         <Head>
           <link rel="icon" href="https://newslab.pts.org.tw/static/images/icon/icon-favicon.png" />
         </Head>

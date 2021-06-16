@@ -5,4 +5,7 @@
   @media (max-width: $mobile-max) {
     width: 100% !important;
   }
+  @media (max-width: 330px) {
+    width: 95% !important;
+  }
 }

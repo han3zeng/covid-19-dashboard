@@ -5,21 +5,23 @@ import Navigation from '../components/Navigation'
 import Landing from '../components/Landing'
 import Content from '../components/Content'
 import ReadMore from '../components/ReadMore'
-import Footer from '../components/Footer';
+import Footer from '../components/Footer'
 
 export default function Home ({ spreadsheet }) {
   return (
-    <div className={styles.container}>
-      <Navigation />
-      <Landing
-        data={spreadsheet.landing}
-      />
-      <Content
-        data={spreadsheet.content}
-      />
-      <ReadMore
-        data={spreadsheet.read_more}
-      />
+    <div>
+      <div className={styles.container}>
+        <Navigation />
+        <Landing
+          data={spreadsheet.landing}
+        />
+        <Content
+          data={spreadsheet.content}
+        />
+        <ReadMore
+          data={spreadsheet.read_more}
+        />
+      </div>
       <Footer/>
     </div>
   )

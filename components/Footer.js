@@ -55,12 +55,30 @@ const Footer = () => {
         data={peopleDate}
       />
       <div className={styles.logos}>
-        <img src="/logo-1.svg" alt="公共電視 P#新聞實驗室 logo "/>
-        <img src="/logo-2.svg" alt="公共電視 P#新聞實驗室 logo "/>
-        <img src="/logo-3.svg" alt="公共電視 P#新聞實驗室 logo "/>
+        <a
+          href="https://www.pts.org.tw/"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <img src="/logo-1.svg" alt="公共電視可點擊商標" />
+        </a>
+        <a
+          href="https://news.pts.org.tw/"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <img src="/logo-2.svg" alt="公視新聞網可點擊商標" />
+        </a>
+        <a
+          href="https://newslab.pts.org.tw/"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <img src="/logo-3.svg" alt="新聞實驗室可點擊商標" />
+        </a>
       </div>
       <div className={styles.copyRight}>
-        Public Television Service Foundation.All Rights Reserved.
+        Public Television Service Foundation. All Rights Reserved.
       </div>
     </div>
   )

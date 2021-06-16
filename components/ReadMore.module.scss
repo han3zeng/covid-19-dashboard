@@ -14,7 +14,7 @@
 .more {
   width: 504px;
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-start;
   margin-bottom: 32px;
   align-items: center;
   img {
@@ -38,7 +38,7 @@
     font-weight: 700;
     font-size: 18px;
     color: #1F1F1F;
-
+    margin-bottom: 8px;
   }
   .date {
     font-size: $caption-font-size;
