@@ -1,5 +1,3 @@
-// server.js
-
 const express = require('express')
 var fs = require('fs')
 const expressServer = express()
@@ -57,6 +55,36 @@ try {
   }))
 }
 
+function fetchFromRedis({
+  res,
+}) {
+  client.get(DATA_KEY, (err, spreadsheet) => {
+    if (err) {
+      logger.log(getLogObject({
+        level: 'error',
+        message: `redis get key: ${DATA_KEY} error`,
+        error: err,
+        filename: 'server.js'
+      }))
+      return
+    }
+    try {
+      const result = JSON.parse(spreadsheet)
+      res.json(result)
+    } catch (err) {
+      logger.log(getLogObject({
+        level: 'error',
+        message: 'server try to parse final spreadsheet data',
+        error: err,
+        filename: 'server.js'
+      }))
+      res.json({
+        error: err
+      })
+    }
+  })
+}
+
 function fetchFromGoogleAndWrite ({
   res,
   currentTimestamp
@@ -100,6 +128,9 @@ function fetchFromGoogleAndWrite ({
         error,
         filename: 'spreadsheet.js'
       }))
+      fetchFromRedis({
+        res,
+      })
     })
 }
 
@@ -120,30 +151,8 @@ function fetchSpreadsheetData ({
         currentTimestamp
       })
     } else {
-      client.get(DATA_KEY, (err, spreadsheet) => {
-        if (err) {
-          logger.log(getLogObject({
-            level: 'error',
-            message: `redis get key: ${DATA_KEY} error`,
-            error: err,
-            filename: 'server.js'
-          }))
-          return
-        }
-        try {
-          const result = JSON.parse(spreadsheet)
-          res.json(result)
-        } catch (err) {
-          logger.log(getLogObject({
-            level: 'error',
-            message: 'server try to parse final spreadsheet data',
-            error: err,
-            filename: 'server.js'
-          }))
-          res.json({
-            error: err
-          })
-        }
+      fetchFromRedis({
+        res,
       })
     }
   })

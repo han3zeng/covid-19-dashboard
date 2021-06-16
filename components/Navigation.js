@@ -7,7 +7,7 @@ function Navigation () {
       <a
         href="https://newslab.pts.org.tw/"
         target="_blank"
-        rel="noopener noreferer"
+        rel="noopener noreferrer"
       >
         <img src="/psharp-logo.svg" alt="公視新聞實驗室 psharp logo"/>
       </a>
