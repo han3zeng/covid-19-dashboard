@@ -1,12 +1,7 @@
 /* global FB */
 import styles from './ShareButton.module.scss'
 
-const target = 'https://news.pts.org.tw/curations';
-
-// const CustomizedLink = styled.a`
-//   display: contents;
-// `
-
+const target = 'https://news.pts.org.tw/project/covid-tw-2021';
 
 const LineShare = () => {
   return (

@@ -11,6 +11,7 @@
 ```bash
 # cd to root directory of this project folder
 docker compose up --build -d
+# sudo docker-compose up --build -d --force-recreate
 ```
 
 

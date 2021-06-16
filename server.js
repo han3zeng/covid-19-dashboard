@@ -170,7 +170,7 @@ app.prepare().then(() => {
       })
     }
   })
-  expressServer.get('/project/covid-19-dashboard', (req, res) => {
+  expressServer.get('/project/covid-tw-2021', (req, res) => {
     req.url = '/'
     const parsedUrl = parse(req.url, true)
     handle(req, res, parsedUrl)
