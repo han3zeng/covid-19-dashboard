@@ -1,5 +1,6 @@
 import React from 'react'
 import styles from './Footer.module.scss'
+const { basePath } = require('../next.config.js')
 
 const People = ({ data }) => {
   const Content = data.map((person, index) => {
@@ -60,21 +61,21 @@ const Footer = () => {
           target="_blank"
           rel="noopener noreferrer"
         >
-          <img src="/logo-1.svg" alt="公共電視可點擊商標" />
+          <img src={`${basePath}/logo-1.svg`} alt="公共電視可點擊商標" />
         </a>
         <a
           href="https://news.pts.org.tw/"
           target="_blank"
           rel="noopener noreferrer"
         >
-          <img src="/logo-2.svg" alt="公視新聞網可點擊商標" />
+          <img src={`${basePath}/logo-2.svg`} alt="公視新聞網可點擊商標" />
         </a>
         <a
           href="https://newslab.pts.org.tw/"
           target="_blank"
           rel="noopener noreferrer"
         >
-          <img src="/logo-3.svg" alt="新聞實驗室可點擊商標" />
+          <img src={`${basePath}/logo-3.svg`} alt="新聞實驗室可點擊商標" />
         </a>
       </div>
       <div className={styles.copyRight}>

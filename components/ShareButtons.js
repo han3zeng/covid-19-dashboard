@@ -1,6 +1,6 @@
 /* global FB */
 import styles from './ShareButton.module.scss'
-
+const { basePath } = require('../next.config.js');
 const target = 'https://news.pts.org.tw/project/covid-tw-2021';
 
 const LineShare = () => {
@@ -11,7 +11,7 @@ const LineShare = () => {
         target="_blank"
         rel="noopener noreferer"
       >
-        <img src='/icon-share-line.svg' alt="line_share_button" />
+        <img src={`${basePath}/icon-share-line.svg`} alt="line_share_button" />
       </a>
     </div>
   )
@@ -31,7 +31,7 @@ const FacebookShare = () => {
       className={styles.button}
       onClick={fbShareHandler}
     >
-      <img src="/icon-share-fb.svg" alt="facebook_share_button" />
+      <img src={`${basePath}/icon-share-fb.svg`} alt="facebook_share_button" />
     </div>
   );
 }

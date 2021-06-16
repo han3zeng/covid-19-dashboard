@@ -170,11 +170,6 @@ app.prepare().then(() => {
       })
     }
   })
-  expressServer.get('/project/covid-tw-2021', (req, res) => {
-    req.url = '/'
-    const parsedUrl = parse(req.url, true)
-    handle(req, res, parsedUrl)
-  })
   expressServer.get('/*', (req, res) => {
     const parsedUrl = parse(req.url, true)
     const { pathname, query } = parsedUrl
