@@ -33,7 +33,11 @@ h2 {
   font-size: $caption-font-size;
   color: $caption-color;
   margin-bottom: 32px;
-  max-width: $desktop-max;
+  width: 504px;
+  line-height: 1.77;
+  @media (max-width: $mobile-max) {
+    width: 100%;
+  }
 }
 
 p {

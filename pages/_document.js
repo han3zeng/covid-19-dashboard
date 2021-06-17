@@ -102,6 +102,18 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
 })(window,document,'script','dataLayer','GTM-W3W2ZR4');`
 
+const FBIntilizatoin = `window.fbAsyncInit = function () {
+  if (FB) {
+    FB.init({
+      appId: '6178330708847351',
+      autoLogAppEvents: true,
+      xfbml: true,
+      version: 'v11.0'
+    })
+  }
+}
+`
+
 class MyDocument extends Document {
   render () {
     return (
@@ -163,7 +175,7 @@ class MyDocument extends Document {
           />
           <Main />
           <NextScript />
-          <script src={`${basePath}/initialScript.js`}></script>
+          <script type="text/javascript" dangerouslySetInnerHTML={{ __html: FBIntilizatoin }}></script>
           <script async defer crossOrigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js"></script>
           <script type="text/javascript" dangerouslySetInnerHTML={{ __html: gtmFunction }}></script>
           <script src="https://public.flourish.studio/resources/embed.js"></script>

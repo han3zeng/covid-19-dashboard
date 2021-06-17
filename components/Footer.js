@@ -32,20 +32,24 @@ const Footer = () => {
       name: '卓冠齊'
     },
     {
-      title: '企劃',
-      name: '董容慈、曾芯敏'
+      title: '內容企劃',
+      name: '董容慈'
     },
     {
-      title: '設計',
+      title: '網頁企劃',
       name: '曾芯敏'
     },
     {
-      title: '工程',
+      title: '網頁工程',
       name: '曾涵郁、陳柏偉'
     },
     {
       title: '社群編輯',
       name: 'Nagao Kunaw'
+    },
+    {
+      title: '協助',
+      name: '梅緣緣、廖采潔、劉宣廷'
     }
   ]
   return (
