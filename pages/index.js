@@ -7,6 +7,21 @@ import Content from '../components/Content'
 import ReadMore from '../components/ReadMore'
 import Footer from '../components/Footer'
 
+const DEFAULT_DATA_OBJ = {
+  landing: {
+    h1: '',
+    timestamp_updatedAt: '',
+    timestamp_releasedAt: '',
+    stats_confirmedDomesticToday: '',
+    stats_confirmedTotal: '',
+    stats_deathTotal: '',
+    stats_quarantineEndCount: '',
+    stats_vaccinatedRate: ''
+  },
+  content: [],
+  read_more: []
+}
+
 export default function Home ({ spreadsheet }) {
   return (
     <div>
@@ -42,7 +57,7 @@ export async function getServerSideProps (context) {
   }
   return {
     props: {
-      spreadsheet
+      spreadsheet: spreadsheet || DEFAULT_DATA_OBJ
     }
   }
 }
