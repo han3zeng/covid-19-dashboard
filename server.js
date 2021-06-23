@@ -1,5 +1,5 @@
 const express = require('express')
-var fs = require('fs')
+const fs = require('fs')
 const expressServer = express()
 const port = process.env.PORT
 const { parse } = require('url')
@@ -9,7 +9,6 @@ const app = next({ dev })
 const handle = app.getRequestHandler()
 
 const getSpreadsheetData = require('./utils/spreadsheet')
-const { sheetDataProcessor } = require('./utils/processor')
 const { logger, getLogObject } = require('./utils/create-logger');
 
 const redis = require('redis')
@@ -85,16 +84,14 @@ function fetchFromRedis({
   })
 }
 
-function fetchFromGoogleAndWrite ({
+
+function fetchFromS3AndWrite ({
   res,
   currentTimestamp
 }) {
   const promise = getSpreadsheetData()
   promise
-    .then((rawSpreadsheet) => {
-      const spreadsheet = sheetDataProcessor({
-        rawData: rawSpreadsheet
-      })
+    .then((spreadsheet) => {
       const spreadsheetJSONString = JSON.stringify(spreadsheet)
       client.set(DATA_KEY, spreadsheetJSONString, (error) => {
         if (error) {
@@ -146,7 +143,7 @@ function fetchSpreadsheetData ({
     const updatedAtInt = parseInt(updatedAt)
     const timeInterval = Math.floor((currentTimestamp - updatedAtInt) / 1000)
     if ((updatedAt && timeInterval >= UPDATE_INTERVAL) || !updatedAt) {
-      fetchFromGoogleAndWrite({
+      fetchFromS3AndWrite({
         res,
         currentTimestamp
       })
