@@ -1,7 +1,7 @@
 @import '../styles/variables';
 
-.container {
-  position: fixed;
+.headerContainer {
+  position: relative;
   padding: 16px 16px;
   width: 100%;
   box-sizing: border-box;
@@ -10,12 +10,47 @@
   > a {
     border: none;
   }
+  .rightDivision {
+    display: flex;
+    align-items: center;
+    > div:nth-child(1) {
+      margin-right: 16px;
+    }
+  }
 }
 
-.rightDivision {
-  display: flex;
-  align-items: center;
-  > div:nth-child(1) {
-    margin-right: 16px;
+.navigation {
+  position: fixed;
+  top: 0;
+  padding: 16px 0;
+  width: 100%;
+  box-sizing: border-box;
+  overflow-x: auto;
+  background-color: $background-color;
+  border-bottom: 1px solid #CECECE;
+  transform: translateY(-100%);
+  transition: transform 0.3s ease-in-out;
+  .flexContainer {
+    display: inline-flex;
+    padding: 0 16px;
+    > label {
+      white-space: nowrap;
+      color: #1F1F1F;
+      font-size: 14px;
+      transition: border 0.3s ease-in-out;
+      border-bottom: 2px solid transparent;
+      cursor: pointer;
+      display: content;
+    }
+    > label:not(:last-child) {
+      margin-right: 20px;
+    }
+    .highlight {
+      border-bottom: 2px solid $theme-purple;
+    }
   }
+}
+
+.showUp {
+  transform: translateY(0);
 }

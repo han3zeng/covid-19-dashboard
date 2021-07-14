@@ -17,9 +17,7 @@ const Components = ({
   elem
 }) => {
   const { type, value, desktopWidth } = elem
-  if (type === H2) {
-    return (<h2>{value}</h2>)
-  } else if (type === PARAGRAPH) {
+  if (type === PARAGRAPH) {
     return (<p className={styles.paragraph} dangerouslySetInnerHTML={createMarkup(value)} />)
   } else if (type === IFRAME) {
     return (<IFrame value={value} desktopWidth={desktopWidth} />)
@@ -36,16 +34,30 @@ class Content extends React.Component {
   }
 
   componentDidMount() {
-    // const script = document.createElement("script");
-    // script.src = "https://public.flourish.studio/resources/embed.js";
-    // script.async = true;
-    // document.body.appendChild(script);
+
   }
 
   _rednerContent() {
     const { data } = this.props;
-    return data.map((elem, index) => {
-      return <Components elem={elem} key={`${elem.type}_${index}`} />
+    return data.map((section, index) => {
+      const { type, value, sectionId, sectionContent } = section;
+      return (
+        <section
+          key={sectionId}
+          className={styles.section}
+          id={`section_${sectionId}`}
+        >
+          <h2>{value}</h2>
+          {sectionContent.map((elem, index) => {
+            return (
+              <Components
+                elem={elem}
+                key={`${elem.type}_${index}`}
+              />
+            );
+          })}
+        </section>
+      )
     })
   }
 

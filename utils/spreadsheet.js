@@ -1,10 +1,13 @@
 const https = require('https')
+const http = require('http')
+const TARGET_PROD = 'https://tpts-public.s3.ap-southeast-1.amazonaws.com/covid-19-dashboard/content-covid-19-dashboard.json'
+const TARGET_DEV = 'http://localhost:8080/content-covid-19-dashboard-v2'
 
 async function getSpreadsheetData () {
   const promise = new Promise((resolve, reject) => {
-    https
+    http
       .get(
-        'https://tpts-public.s3.ap-southeast-1.amazonaws.com/covid-19-dashboard/content-covid-19-dashboard.json',
+        TARGET_DEV,
         (res) => {
           const { statusCode } = res
           const contentType = res.headers['content-type']

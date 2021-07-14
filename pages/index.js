@@ -1,7 +1,7 @@
 import Head from 'next/head'
 import Image from 'next/image'
 import styles from '../styles/Home.module.scss'
-import Navigation from '../components/Navigation'
+import { Header, Navigation } from '../components/Navigation'
 import Landing from '../components/Landing'
 import Content from '../components/Content'
 import ReadMore from '../components/ReadMore'
@@ -26,12 +26,16 @@ export default function Home ({ spreadsheet }) {
   return (
     <div>
       <div className={styles.container}>
-        <Navigation />
+        <Header />
+        <Navigation
+          data={spreadsheet.sections}
+        />
         <Landing
           data={spreadsheet.landing}
         />
         <Content
           data={spreadsheet.content}
+          sectionsMap={spreadsheet.sections}
         />
         <ReadMore
           data={spreadsheet.read_more}

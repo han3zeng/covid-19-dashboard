@@ -24,5 +24,8 @@ ports:
 ```
 
 
+## Note
+* path: http://localhost:3000/project/covid-tw-2021
+
 ## TO DO
 * [ ] handle server error properly
