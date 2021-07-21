@@ -83,17 +83,24 @@ class More extends React.Component {
     const Content = finalData.map((more, index) => {
       const { href, imgUrl, title, date } = more
       return (
-        <div className={styles.gridItem} key={index}>
-          <div className={styles.testWrapper}>
-            <div className={styles.imgWrapper}>
-              <img src={imgUrl} />
+        <a
+          href={href}
+          target="_blank"
+          rel="noreferrer noopener"
+          key={`${href}_${index}`}
+        >
+          <div className={styles.gridItem} key={index}>
+            <div className={styles.testWrapper}>
+              <div className={styles.imgWrapper}>
+                <img src={imgUrl} />
+              </div>
+            </div>
+            <div className={styles.subDivision}>
+              <div className={styles.title}>{title}</div>
+              <div className={styles.date}>{date}</div>
             </div>
           </div>
-          <div className={styles.subDivision}>
-            <div className={styles.title}>{title}</div>
-            <div className={styles.date}>{date}</div>
-          </div>
-        </div>
+        </a>
       )
     })
     return (

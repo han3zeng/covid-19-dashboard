@@ -1,0 +1,16 @@
+@import '../styles/variables';
+
+.container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-top: 133px;
+  margin-bottom: 100px;
+  > div:nth-child(1) {
+    margin-right: 30px;
+  }
+  @media (max-width: $mobile-max) {
+    margin-top: 97px;
+    margin-bottom: 64px;
+  }
+}

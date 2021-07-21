@@ -58,7 +58,7 @@
   color: $theme-purple;
   cursor: pointer;
   width: 152px;
-  margin: 32px auto 60px auto;
+  margin: 32px auto 0 auto;
 }
 
 .more {
@@ -70,13 +70,20 @@
   @media (max-width: $mobile-max) {
     grid-template-columns: auto;
   }
-  > .gridItem {
+  a {
+    text-decoration: none;
+    border-bottom: none;
+  }
+
+  .gridItem {
     display: flex;
     flex-direction: column;
+    cursor: pointer;
     @media (max-width: $mobile-max) {
       flex-direction: row;
       justify-content: space-between;
     }
+
     .subDivision {
       display: flex;
       flex-direction: column;

@@ -5,7 +5,7 @@ import { Header, Navigation } from '../components/Navigation'
 import Landing from '../components/Landing'
 import Content from '../components/Content'
 import ReadMoreContainer from '../components/ReadMoreContainer'
-import ReadMore from '../components/ReadMore'
+import SubFooter from '../components/SubFooter'
 import Footer from '../components/Footer'
 
 const DEFAULT_DATA_OBJ = {
@@ -42,6 +42,7 @@ export default function Home ({ spreadsheet }) {
           data={spreadsheet.read_more}
         />
       </div>
+      <SubFooter />
       <Footer/>
     </div>
   )
