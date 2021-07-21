@@ -1,7 +1,7 @@
 import React from 'react'
 import styles from './ReadMore.module.scss'
 
-const clipCount = 8
+const clipCount = 3
 
 class More extends React.Component {
   constructor (props) {
@@ -9,7 +9,7 @@ class More extends React.Component {
     this.state = {
       clipped: true
     }
-    this.unClip = this._unClip.bind(this);
+    this.unClip = this._unClip.bind(this)
   }
 
   _unClip () {
@@ -18,67 +18,95 @@ class More extends React.Component {
     })
   }
 
+  // _renderContent () {
+  //   const { data } = this.props
+  //   const { clipped } = this.state
+  //   const Content = ({
+  //     index,
+  //     href,
+  //     imgUrl,
+  //     title,
+  //     date
+  //   }) => (
+  //     <a
+  //       href={href}
+  //       target="_blank"
+  //       rel="noreferrer noopener"
+  //       key={`${href}_${index}`}
+  //     >
+  //       <div className={styles.more}>
+  //         <img src={imgUrl}/>
+  //         <div>
+  //           <div className={styles.title}>{title}</div>
+  //           <div className={styles.date}>{date}</div>
+  //         </div>
+  //       </div>
+  //     </a>
+  //   )
+  //
+  //   return data.map((more, index) => {
+  //     const { href, imgUrl, title, date } = more;
+  //     if (clipped) {
+  //       if (index < clipCount) {
+  //         return (
+  //           <Content
+  //             key={`${encodeURIComponent(title)}_${index}`}
+  //             index={index}
+  //             href={href}
+  //             imgUrl={imgUrl}
+  //             title={title}
+  //             date={date}
+  //           />
+  //         )
+  //       } else {
+  //         return null;
+  //       }
+  //     } else {
+  //       return (
+  //         <Content
+  //           key={`${encodeURIComponent(title)}_${index}`}
+  //           index={index}
+  //           href={href}
+  //           imgUrl={imgUrl}
+  //           title={title}
+  //           date={date}
+  //         />
+  //       )
+  //     }
+  //   })
+  // }
 
-  _renderContent () {
+  _renderContentV2 () {
     const { data } = this.props
     const { clipped } = this.state
-    const Content = ({
-      index,
-      href,
-      imgUrl,
-      title,
-      date
-    }) => (
-      <a
-        href={href}
-        target="_blank"
-        rel="noreferrer noopener"
-        key={`${href}_${index}`}
-      >
-        <div className={styles.more}>
-          <img src={imgUrl}/>
-          <div>
+    const finalData = clipped ? data.slice(0, clipCount) : data
+    const Content = finalData.map((more, index) => {
+      const { href, imgUrl, title, date } = more
+      return (
+        <div className={styles.gridItem} key={index}>
+          <div className={styles.testWrapper}>
+            <div className={styles.imgWrapper}>
+              <img src={imgUrl} />
+            </div>
+          </div>
+          <div className={styles.subDivision}>
             <div className={styles.title}>{title}</div>
             <div className={styles.date}>{date}</div>
           </div>
         </div>
-      </a>
-    )
-
-    return data.map((more, index) => {
-      const { href, imgUrl, title, date } = more;
-      if (clipped) {
-        if (index < clipCount) {
-          return (
-            <Content
-              key={`${encodeURIComponent(title)}_${index}`}
-              index={index}
-              href={href}
-              imgUrl={imgUrl}
-              title={title}
-              date={date}
-            />
-          )
-        } else {
-          return null;
-        }
-      } else {
-        return (
-          <Content
-            key={`${encodeURIComponent(title)}_${index}`}
-            index={index}
-            href={href}
-            imgUrl={imgUrl}
-            title={title}
-            date={date}
-          />
-        )
-      }
+      )
     })
+    return (
+      <div
+        className={styles.more}
+      >
+        {Content}
+      </div>
+    )
   }
 
-  _renderButton() {
-    const { clipped } = this.state;
+  _renderButton () {
+    const { clipped } = this.state
     if (clipped) {
       return (
         <div
@@ -87,17 +115,17 @@ class More extends React.Component {
         >
           閱讀更多
         </div>
-      );
+      )
     }
-    return null;
+    return null
   }
 
   render () {
     return (
-      <div>
-        {this._renderContent()}
+      <>
+        {this._renderContentV2()}
         {this._renderButton()}
-      </div>
+      </>
     )
   }
 }

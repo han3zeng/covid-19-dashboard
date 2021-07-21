@@ -20,13 +20,22 @@ h1 {
 }
 
 h2 {
+  margin-top: 96px;
   font-weight: bold;
   font-size: 28px;
   margin-bottom: 32px;
+  text-align: center;
   @media (max-width: $mobile-max) {
     font-size: 24px;
+    margin-top: 60px;
   }
   color: #1F1F1F;
+}
+
+h3 {
+  font-size: 20px;
+  font-weight: 800;
+  line-height: 30px;
 }
 
 .caption {

@@ -4,6 +4,7 @@ import styles from '../styles/Home.module.scss'
 import { Header, Navigation } from '../components/Navigation'
 import Landing from '../components/Landing'
 import Content from '../components/Content'
+import ReadMoreContainer from '../components/ReadMoreContainer'
 import ReadMore from '../components/ReadMore'
 import Footer from '../components/Footer'
 
@@ -37,7 +38,7 @@ export default function Home ({ spreadsheet }) {
           data={spreadsheet.content}
           sectionsMap={spreadsheet.sections}
         />
-        <ReadMore
+        <ReadMoreContainer
           data={spreadsheet.read_more}
         />
       </div>
