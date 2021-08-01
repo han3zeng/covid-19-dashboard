@@ -7,6 +7,7 @@ import Content from '../components/Content'
 import ReadMoreContainer from '../components/ReadMoreContainer'
 import SubFooter from '../components/SubFooter'
 import Footer from '../components/Footer'
+import LandingWithBackground from '../components/LandingWithBackground'
 
 const DEFAULT_DATA_OBJ = {
   landing: {
@@ -26,11 +27,14 @@ const DEFAULT_DATA_OBJ = {
 export default function Home ({ spreadsheet }) {
   return (
     <div>
+      <Header />
+      <Navigation
+        data={spreadsheet.sections}
+      />
+      <LandingWithBackground
+        data={spreadsheet.landing}
+      />
       <div className={styles.container}>
-        <Header />
-        <Navigation
-          data={spreadsheet.sections}
-        />
         <Landing
           data={spreadsheet.landing}
         />

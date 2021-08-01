@@ -3,6 +3,8 @@ import styles from './Navigation.module.scss'
 import { FacebookShare, LineShare } from './ShareButtons'
 const { basePath } = require('../next.config.js')
 
+const offset = 40;
+
 class Navigation extends React.Component {
   constructor (props) {
     super(props);
@@ -17,7 +19,7 @@ class Navigation extends React.Component {
   _handleOnClick(key) {
     if (window) {
       const elem = document.getElementById(`section_${key}`);
-      const target = elem.offsetTop - 70;
+      const target = elem.offsetTop - offset;
       if (!elem) {
         return
       }
@@ -34,7 +36,7 @@ class Navigation extends React.Component {
     const options = {
       root: null,
       rootMargin: '0px',
-      threshold: 0.4,
+      threshold: 0.2,
     }
     const observer = new IntersectionObserver((entries, observer) => {
       entries.forEach((entry, index) => {
@@ -60,12 +62,12 @@ class Navigation extends React.Component {
   _onScrollHandler() {
     const { showUp } = this.state;
     if (window) {
-      if (window.scrollY >= 70 && !showUp) {
+      if (window.scrollY >= offset && !showUp) {
         this.setState({
           showUp: true,
         })
       }
-      if (window.scrollY < 70 && showUp) {
+      if (window.scrollY < offset && showUp) {
         this.setState({
           showUp: false,
         })
@@ -128,6 +130,7 @@ function Header () {
         href="https://newslab.pts.org.tw/"
         target="_blank"
         rel="noopener noreferrer"
+        style={{ display: 'flex', alignItems: 'center' }}
       >
         <img src={`${basePath}/psharp-logo.svg`} alt="公視新聞實驗室 psharp logo"/>
       </a>

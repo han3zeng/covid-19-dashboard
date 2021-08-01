@@ -1,0 +1,39 @@
+@import '../styles/variables';
+$cdnBase: 'https://d3prffu8f9hpuw.cloudfront.net/covid-19-dashboard/';
+
+
+.caption {
+  font-size: $caption-font-size;
+  color: $caption-color;
+}
+
+.moduleCaption {
+  @extend .caption;
+  margin-bottom: 0px;
+}
+
+.background {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 40px 0;
+  justify-content: space-between;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 100%;
+  height: 400px;
+  @media (min-width: 1025px) {
+    background-image: url($cdnBase + 'img_header_bg_1440.jpg');
+  }
+  @media (max-width: 1024px) {
+    background-image: url($cdnBase + 'img_header_bg_1024.jpg');
+  }
+  @media (max-width: 768px) {
+    background-image: url($cdnBase + 'img_header_bg_768.jpg');
+  }
+  @media (max-width: 400px) {
+    background-image: url($cdnBase + 'img_header_bg_400.jpg');
+  }
+}

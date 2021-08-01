@@ -2,7 +2,9 @@
 
 .headerContainer {
   position: relative;
-  padding: 16px 16px;
+  height: 48px;
+  box-sizing: border-box;
+  padding: 0 16px;
   width: 100%;
   box-sizing: border-box;
   display: flex;
@@ -20,10 +22,13 @@
 }
 
 .navigation {
+  height: 48px;
+  box-sizing: border-box;
   position: fixed;
+  display: flex;
+  align-items: center;
   top: 0;
   z-index: 1;
-  padding: 16px 0;
   width: 100%;
   box-sizing: border-box;
   overflow-x: auto;

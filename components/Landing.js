@@ -21,12 +21,6 @@ function Landing ({
 
   return (
     <div className={styles.container}>
-      <img style={{ width: "57px" }}src={`${basePath}/icon-live.gif`} />
-      <h1 dangerouslySetInnerHTML={createMarkup(h1)} />
-      <div>
-        <div className={styles.moduleCaption}>{`發布日期：${timestamp_updatedAt}`}</div>
-        <div className={styles.moduleCaption}>{`最後更新：${timestamp_releasedAt}`}</div>
-      </div>
       <div className={styles.statsGroup}>
         <div className={styles.stat}>
           <div className={styles.moduleCaption}>{stats_confirmedDomesticToday.label}</div>

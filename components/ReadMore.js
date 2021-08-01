@@ -18,65 +18,7 @@ class More extends React.Component {
     })
   }
 
-  // _renderContent () {
-  //   const { data } = this.props
-  //   const { clipped } = this.state
-  //   const Content = ({
-  //     index,
-  //     href,
-  //     imgUrl,
-  //     title,
-  //     date
-  //   }) => (
-  //     <a
-  //       href={href}
-  //       target="_blank"
-  //       rel="noreferrer noopener"
-  //       key={`${href}_${index}`}
-  //     >
-  //       <div className={styles.more}>
-  //         <img src={imgUrl}/>
-  //         <div>
-  //           <div className={styles.title}>{title}</div>
-  //           <div className={styles.date}>{date}</div>
-  //         </div>
-  //       </div>
-  //     </a>
-  //   )
-  //
-  //   return data.map((more, index) => {
-  //     const { href, imgUrl, title, date } = more;
-  //     if (clipped) {
-  //       if (index < clipCount) {
-  //         return (
-  //           <Content
-  //             key={`${encodeURIComponent(title)}_${index}`}
-  //             index={index}
-  //             href={href}
-  //             imgUrl={imgUrl}
-  //             title={title}
-  //             date={date}
-  //           />
-  //         )
-  //       } else {
-  //         return null;
-  //       }
-  //     } else {
-  //       return (
-  //         <Content
-  //           key={`${encodeURIComponent(title)}_${index}`}
-  //           index={index}
-  //           href={href}
-  //           imgUrl={imgUrl}
-  //           title={title}
-  //           date={date}
-  //         />
-  //       )
-  //     }
-  //   })
-  // }
-
-  _renderContentV2 () {
+  _renderContent () {
     const { data } = this.props
     const { clipped } = this.state
     const finalData = clipped ? data.slice(0, clipCount) : data
@@ -130,7 +72,7 @@ class More extends React.Component {
   render () {
     return (
       <>
-        {this._renderContentV2()}
+        {this._renderContent()}
         {this._renderButton()}
       </>
     )
