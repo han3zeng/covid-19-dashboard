@@ -25,8 +25,6 @@ RUN adduser -S nextjs -u 1001
 
 # You only need to copy next.config.js if you are NOT using the default configuration
 COPY --from=builder /covid-19-dashboard/next.config.js ./
-COPY --from=builder /covid-19-dashboard/client_secret.json ./client_secret.json
-COPY --from=builder /covid-19-dashboard/token.json ./token.json
 COPY --from=builder /covid-19-dashboard/utils ./utils
 COPY --from=builder /covid-19-dashboard/server.js ./server.js
 COPY --from=builder /covid-19-dashboard/public ./public
