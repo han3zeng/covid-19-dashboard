@@ -13,42 +13,6 @@
   align-items: center;
 }
 
-
-// .more {
-//   width: 504px;
-//   display: flex;
-//   justify-content: flex-start;
-//   margin-bottom: 32px;
-//   align-items: center;
-//   img {
-//     width: 94px;
-//     height: 94px;
-//     object-fit: cover;
-//     margin-right: 24px;
-//   }
-//   @media (max-width: $mobile-max) {
-//     width: 100%;
-//   }
-//
-//   > div {
-//     display: flex;
-//     flex-direction: column;
-//     justify-content: space-between;
-//     padding: 10px 0 5px 0;
-//   }
-//
-//   .title {
-//     font-weight: 700;
-//     font-size: 18px;
-//     color: #1F1F1F;
-//     margin-bottom: 8px;
-//   }
-//   .date {
-//     font-size: $caption-font-size;
-//     color: $caption-color;
-//   }
-// }
-
 .button {
   text-align: center;
   border: 1px solid $theme-purple;
@@ -65,7 +29,7 @@
   width: 100%;
   max-width: 1032px;
   display: grid;
-  grid-template-columns: 33% 33% 33%;
+  grid-template-columns: 1fr 1fr 1fr;
   gap: 24px;
   @media (max-width: $mobile-max) {
     grid-template-columns: 100%;
@@ -97,6 +61,9 @@
       font-size: 18px;
       color: #1F1F1F;
       margin: 8px 0;
+      @media (max-width: $mobile-max) {
+        margin: 0 0 8px 0;
+      }
     }
 
     .date {
@@ -115,10 +82,8 @@
     .imgWrapper {
       position: relative;
       max-width: 328px;
-      aspect-ratio: 16/9;
-      @media (max-width: $mobile-max) {
-        width: 100%;
-      }
+      padding-top: 56.25%;
+      width: 100%;
       > img {
         position: absolute;
         top: 0;

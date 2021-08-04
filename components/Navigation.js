@@ -2,6 +2,7 @@ import React, { createRef } from 'react'
 import styles from './Navigation.module.scss'
 import { FacebookShare, LineShare } from './ShareButtons'
 const { basePath } = require('../next.config.js')
+import smoothscroll from 'smoothscroll-polyfill'
 
 const offset = 40;
 
@@ -98,6 +99,7 @@ class Navigation extends React.Component {
   }
 
   componentDidMount () {
+    smoothscroll.polyfill()
     this._initiateObserver();
     if (window) {
       window.addEventListener('scroll', this.onScrollHandler)
