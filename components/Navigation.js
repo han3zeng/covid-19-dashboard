@@ -14,9 +14,27 @@ class Navigation extends React.Component {
     }
     this.onScrollHandler = this._onScrollHandler.bind(this);
     this.node = createRef();
+    this.lables = {};
   }
 
-  _handleOnClick(key) {
+  _scrollToAnchorInternally({
+    elem,
+  }) {
+    if (this.node && this.node.current) {
+      const { scrollWidth, clientWidth } = this.node.current;
+      if (scrollWidth > clientWidth) {
+        this.node.current.scrollTo({
+          left: elem.offsetLeft - 6,
+          behavior: 'smooth',
+        })
+      }
+    }
+  }
+
+  _handleOnClick({
+    e,
+    key,
+  }) {
     if (window) {
       const elem = document.getElementById(`section_${key}`);
       const target = elem.offsetTop - offset;
@@ -48,6 +66,10 @@ class Navigation extends React.Component {
             this.setState({
               currentSectionId: id,
             })
+            const targetAnchorElem = this.labels[`anchor_${id}`];
+            this._scrollToAnchorInternally({
+              elem: targetAnchorElem,
+            });
           }
         }
       })
@@ -97,10 +119,23 @@ class Navigation extends React.Component {
       const className = currentSectionId === key ? styles.highlight : null
       return (
         <label
+          ref={
+            (node) => {
+              if (node) {
+                this.labels = {
+                  ...this.labels,
+                  [`anchor_${key}`]: node,
+                }
+              }
+            }
+          }
           className={className}
           key={key}
-          onClick={() => {
-            this._handleOnClick(key)
+          onClick={(e) => {
+            this._handleOnClick({
+              e,
+              key,
+            })
           }}
         >
           {data[key]}

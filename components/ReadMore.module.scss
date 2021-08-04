@@ -65,10 +65,10 @@
   width: 100%;
   max-width: 1032px;
   display: grid;
-  grid-template-columns: auto auto auto;
+  grid-template-columns: 33% 33% 33%;
   gap: 24px;
   @media (max-width: $mobile-max) {
-    grid-template-columns: auto;
+    grid-template-columns: 100%;
   }
   a {
     text-decoration: none;
@@ -96,7 +96,7 @@
       font-weight: 700;
       font-size: 18px;
       color: #1F1F1F;
-      margin-bottom: 8px;
+      margin: 8px 0;
     }
 
     .date {
@@ -115,7 +115,7 @@
     .imgWrapper {
       position: relative;
       max-width: 328px;
-      aspect-ratio: 16/12;
+      aspect-ratio: 16/9;
       @media (max-width: $mobile-max) {
         width: 100%;
       }
