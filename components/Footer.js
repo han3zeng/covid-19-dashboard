@@ -46,10 +46,6 @@ const Footer = () => {
     {
       title: '社群編輯',
       name: 'Nagao Kunaw'
-    },
-    {
-      title: '協助',
-      name: '梅緣緣、廖采潔、劉宣廷'
     }
   ]
   return (
