@@ -100,7 +100,7 @@ function makeStructuredData() {
           "url": "https://avatars1.githubusercontent.com/t/3351266?s=280&v=4"
         }
       },
-      "description": "全台三級警戒至今，公視新聞網不斷更新，台灣正式進入「社區感染」以來，每日縣市確診數，以及疫苗施打進度，並傳遞最新疫情消息與觀點。 "  
+      "description": "全台三級警戒至今，公視新聞網不斷更新，台灣正式進入「社區感染」以來，每日縣市確診數，以及疫苗施打進度，並傳遞最新疫情消息與觀點。 "
     }
 }
 
@@ -130,7 +130,7 @@ class MyDocument extends Document {
           <meta name="title" content="台灣Covid-19最新疫情動態｜數位專題 | P#新聞實驗室" />
           <meta name="description" content="全台三級警戒至今，公視新聞網不斷更新，台灣正式進入「社區感染」以來，每日縣市確診數，以及疫苗施打進度，並傳遞最新疫情消息與觀點。 標籤: 新冠肺炎,武漢肺炎,疾管署,衛福部,校正回歸,居家隔離,集中檢疫,社區感染,萬華,台北,新北市,國產疫苗,確診,快篩,陽性率,獅子會,三級警戒,COVID-19,本土病例,疫情,群體免疫,COVAX,莫德納,AZ,BNT,高端,聯亞,疫苗,疫苗涵蓋率,公費疫苗預約平台" />
           <meta name="news_keywords" content="新冠肺炎,武漢肺炎,疾管署,衛福部,校正回歸,居家隔離,集中檢疫,社區感染,萬華,台北,新北市,國產疫苗,確診,快篩,陽性率,獅子會,三級警戒,COVID-19,本土病例,疫情,群體免疫,COVAX,莫德納,AZ,BNT,高端,聯亞,疫苗,疫苗涵蓋率,公費疫苗預約平台" />
-          <link rel="canonical" href="https://news.pts.org.tw/project/garbage-islaind-2020" />
+          <link rel="canonical" href="https://news.pts.org.tw/project/covid-tw-2021" />
           <link rel="icon" href="https://newslab.pts.org.tw/static/images/icon/icon-favicon.png" />
           <meta name="application-name" content="P#新聞實驗室" />
           <meta name="copyright" content="公共電視" />
